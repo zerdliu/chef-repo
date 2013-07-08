@@ -6,8 +6,13 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
+package("ctags") do
+  action :install
+end
+
 git "#{Chef::Config[:file_cache_path]}/dotfile" do
-  repository 'https://github.com/zerdliu/dotfile.git'
+  repository 'git@github.com:zerdliu/dotfile.git'
   user 'zerd'
   group 'zerd'
   action :checkout
@@ -23,7 +28,7 @@ execute 'install dotfile' do
 end
 
 git "#{Chef::Config[:file_cache_path]}/dotfile-vim" do
-  repository 'https://github.com/zerdliu/dotfile-vim.git'
+  repository 'git@github.com:zerdliu/dotfile-vim.git'
   user 'zerd'
   group 'zerd'
   action :checkout
