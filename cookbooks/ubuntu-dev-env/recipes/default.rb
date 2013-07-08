@@ -7,9 +7,9 @@
 # All rights reserved - Do Not Redistribute
 #
 git "#{Chef::Config[:file_cache_path]}/dotfile" do
-  source 'git://github.com/zerdliu/dotfile.git'
+  repository 'https://github.com/zerdliu/dotfile.git'
   user 'zerd'
-  mode '0755'
+  group 'zerd'
   action :checkout
   notifies :run, 'execute[install dotfile]'
 end
@@ -18,23 +18,23 @@ end
 gem 'rake'
 execute 'install dotfile' do
   cwd "#{Chef::Config[:file_cache_path]}/dotfile"
-  command 'rake install'
+  command 'rake'
   action :nothing
 end
 
-git "#{Chef::Config[:file_cache_path]}/vim-dotfile" do
-  source 'git://github.com/zerdliu/vim-dotfile.git'
+git "#{Chef::Config[:file_cache_path]}/dotfile-vim" do
+  repository 'https://github.com/zerdliu/dotfile-vim.git'
   user 'zerd'
-  mode '0755'
+  group 'zerd'
   action :checkout
-  notifies :run, 'execute[install vim-dotfile]'
+  notifies :run, 'execute[install dotfile-vim]'
 end
 
 # Run the dotfile rake task to install the files
 gem 'rake'
-execute 'install vim-dotfile' do
-  cwd "#{Chef::Config[:file_cache_path]}/vim-dotfile"
-  command 'rake install'
+execute 'install dotfile-vim' do
+  cwd "#{Chef::Config[:file_cache_path]}/dotfile-vim"
+  command 'rake'
   action :nothing
 end
 
