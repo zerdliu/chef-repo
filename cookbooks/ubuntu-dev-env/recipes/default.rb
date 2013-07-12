@@ -11,6 +11,15 @@ package("ctags") do
   action :install
 end
 
+gem_package("tmuxinator") do
+  action :install
+end
+
+gem_package("pry") do
+  action :install
+end
+
+
 git "#{Chef::Config[:file_cache_path]}/dotfile" do
   repository 'git@github.com:zerdliu/dotfile.git'
   user 'zerd'
